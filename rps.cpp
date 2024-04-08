@@ -1,16 +1,13 @@
 // make something to control input to make the game go on if there is no winner.
 // make some variables to hold game points and bool for do while.
 // make a do while or while loop to handle game continuing or something.
-// use a switch statement makes sense now use that other than being a pleb and use if statements.
 
 // Now I can generated random numbers I need a way to take those numbers
 //  and put it in some switch logic for the rock paper scissor game.
 
-// IMPORTANT TODO: --> side not complete it in 3 days.
+// IMPORTANT TODO: --> side not complete it in 4 days.
 
 /*
-    1. Figure out a way to make 1 = paper, 2 = scissors, 3 = rock.
-        - I think making a struct would work here.
     2. Get and compare user input with the computers pick.
         - Create logic that would compare both user and computer input to determine who won.
     3. Make the Game best out of 3.
@@ -33,7 +30,11 @@ int high = 3;
 
 // call functions
 void myMessage();
+string userInput();
 int randomNumber(mt19937 &eng);
+
+// Array of Rock, Paper, Scissors
+string my_array[] = {"Rock", "Paper", "Scissors"};
 
 // main run
 int main()
@@ -41,7 +42,8 @@ int main()
     myMessage();
     random_device rd;  // obtain a random number from hardware
     mt19937 eng(rd()); // Seed the generator
-    cout << randomNumber(eng);
+    string answer = userInput();
+
     return 0;
 }
 
@@ -60,21 +62,56 @@ void myMessage()
 int randomNumber(mt19937 &eng)
 {
 
-    uniform_int_distribution<int> dist(1, 3); // Define the range
+    uniform_int_distribution<int> dist(0, 2); // Define the range
 
     int randomNumber = dist(eng);
     return randomNumber;
 }
 
-void decision(int num)
+void decision(string user, string com)
 {
-    switch (num)
+    if (user == com)
     {
-    case1:
-
-        break;
-
-    default:
-        break;
+        cout << "It\'s a draw" << endl;
     }
+
+    if (user == "Rock" && com == "Paper")
+    {
+        cout << "Computer Wins";
+    }
+    else if (user == "Rock" && com == "Scissors")
+    {
+        cout << "User Wins!";
+    }
+    else if (user == "Scissors" && com == "Rock")
+    {
+        cout << "Computer wins";
+    }
+    else if (user == "Scissors" && com == "Paper")
+    {
+        cout << "User Wins";
+    }
+    else if (user == "Paper" && com == "Rock")
+    {
+        cout << "User Wins";
+    }
+    else if (user == "Paper" && com == "Scissors")
+    {
+        cout << "Computer Wins";
+    }
+    else
+    {
+        cout << "This is sad!"
+    }
+}
+
+// User input
+
+string userInput()
+{
+    string input;
+    cout << "Enter Your Choice 'Rock' 'Paper' or 'Scissors'" << endl;
+
+    getline(cin, input);
+    return input;
 }
