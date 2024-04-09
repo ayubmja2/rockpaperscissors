@@ -8,8 +8,6 @@
 // IMPORTANT TODO: --> side not complete it in 4 days.
 
 /*
-    2. Get and compare user input with the computers pick.
-        - Create logic that would compare both user and computer input to determine who won.
     3. Make the Game best out of 3.
         - The game will run on a do loop until the condition of 3 games of
           rock paper scissors has been completed.
@@ -31,6 +29,7 @@ int high = 3;
 // call functions
 void myMessage();
 string userInput();
+void decision(string user, string com);
 int randomNumber(mt19937 &eng);
 
 // Array of Rock, Paper, Scissors
@@ -47,8 +46,6 @@ int main()
     return 0;
 }
 
-// functions and other logic
-
 // Terminal UI
 
 void myMessage()
@@ -59,6 +56,9 @@ void myMessage()
     cout << "==================================================================================" << endl;
 }
 
+// functions and other logic
+
+// Random number generator
 int randomNumber(mt19937 &eng)
 {
 
@@ -68,40 +68,43 @@ int randomNumber(mt19937 &eng)
     return randomNumber;
 }
 
+// Winner and Loser Decision control.
+
 void decision(string user, string com)
 {
-    if (user == com)
+    if ((user == "Rock" && com == "Rock") ||
+        (user == "Paper" && com == "Paper") ||
+        (user == "Scissors" && com == "Scissors"))
     {
-        cout << "It\'s a draw" << endl;
+        cout << "Wow a tie, You tied with a computer. Lol can you try harder. A tie is the samething as losing";
     }
-
-    if (user == "Rock" && com == "Paper")
+    else if (user == "Rock" && com == "Paper")
     {
-        cout << "Computer Wins";
+        cout << "Computer Wins. LOL";
     }
     else if (user == "Rock" && com == "Scissors")
     {
-        cout << "User Wins!";
-    }
-    else if (user == "Scissors" && com == "Rock")
-    {
-        cout << "Computer wins";
-    }
-    else if (user == "Scissors" && com == "Paper")
-    {
-        cout << "User Wins";
+        cout << "User Wins. Finally!";
     }
     else if (user == "Paper" && com == "Rock")
     {
-        cout << "User Wins";
+        cout << "User Wins. Finally";
     }
     else if (user == "Paper" && com == "Scissors")
     {
-        cout << "Computer Wins";
+        cout << "Computer Wins. LOL";
+    }
+    else if (user == "Scissors" && com == "Rock")
+    {
+        cout << "Comptuer Wins. LOL";
+    }
+    else if (user == "Scissors" && com == "Paper")
+    {
+        cout << "User Wins. Finally";
     }
     else
     {
-        cout << "This is sad!"
+        cout << "Something Bad happened oops what you gonna do!";
     }
 }
 
